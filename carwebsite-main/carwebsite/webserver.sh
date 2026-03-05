@@ -1,15 +1,11 @@
 #!/bin/bash
 
-sudo yum install httpd git -y
+sudo apt update
+sudo apt install apache2 git -y
 
-sudo systemctl start httpd
-sudo systemctl enable httpd
+sudo systemctl start apache2
+sudo systemctl enable apache2
 
-cd /var/www/html
+sudo cp *.html /var/www/html/
 
-sudo rm -rf *
-
-sudo git clone https://github.com/giriprasanna7/carwebsite-6521.git .
-
-sudo systemctl restart httpd
-
+sudo systemctl restart apache2
