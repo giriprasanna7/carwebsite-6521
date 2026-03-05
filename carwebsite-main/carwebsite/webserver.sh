@@ -1,15 +1,15 @@
 #!/bin/bash
 
-yum install httpd git -y
+sudo yum install httpd git -y
 
-service httpd start
-
-chkconfig httpd on
+sudo systemctl start httpd
+sudo systemctl enable httpd
 
 cd /var/www/html
 
-git clone https://github.com/sreesysadm/carwebsite.git .
+sudo rm -rf *
 
-service httpd restart
+sudo git clone https://github.com/giriprasanna7/carwebsite-6521.git .
 
+sudo systemctl restart httpd
 
