@@ -1,11 +1,9 @@
 #!/bin/bash
 
-sudo apt update
-sudo apt install apache2 git -y
+echo "Starting deployment..."
 
-sudo systemctl start apache2
-sudo systemctl enable apache2
+sudo rm -rf /var/www/html/*
 
-sudo cp *.html /var/www/html/
+sudo cp -r * /var/www/html/
 
-sudo systemctl restart apache2
+echo "Deployment completed successfully"
