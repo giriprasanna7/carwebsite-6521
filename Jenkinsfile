@@ -1,0 +1,34 @@
+pipeline {
+agent any
+
+```
+stages {
+
+    stage('Clone Repository') {
+        steps {
+            git branch: 'main', url: 'https://github.com/giriprasanna7/carwebsite-6521.git'
+        }
+    }
+
+    stage('Deploy Website') {
+        steps {
+            sh '''
+            chmod +x carwebsite-main/carwebsite/webserver.sh
+            ./carwebsite-main/carwebsite/webserver.sh
+            '''
+        }
+    }
+
+}
+
+post {
+    success {
+        echo 'Deployment Successful'
+    }
+    failure {
+        echo 'Deployment Failed!'
+    }
+}
+```
+
+}
