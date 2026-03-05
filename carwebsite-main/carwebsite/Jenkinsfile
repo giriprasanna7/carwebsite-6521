@@ -10,7 +10,7 @@ stages {
         }
     }
 
-    stage('Check Files') {
+    stage('Show Files') {
         steps {
             sh 'ls -R'
         }
