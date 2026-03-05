@@ -3,16 +3,18 @@ pipeline {
 
     stages {
 
-        stage('Build') {
+        stage('Clone Repository') {
             steps {
-                echo "Build stage running"
+                git branch: 'main', url: 'https://github.com/giriprasanna7/carwebsite-6521.git'
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy Website') {
             steps {
-                sh 'chmod +x webserver.sh'
-                sh './webserver.sh'
+                sh '''
+                chmod +x webserver.sh
+                ./webserver.sh
+                '''
             }
         }
 
@@ -23,7 +25,7 @@ pipeline {
             echo 'Deployment Successful'
         }
         failure {
-            echo 'Deployment failed!'
+            echo 'Deployment Failed!'
         }
     }
 }
